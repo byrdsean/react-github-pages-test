@@ -1,7 +1,10 @@
 import "./App.css";
 import { Routes, Route } from "react-router";
 import About from "./About/About";
+import Home from "./Home/Home";
+import NotFound from "./ErrorPages/NotFound";
 import { Link } from "react-router-dom";
+import RouteUrls from "./Navigation/Navigation";
 
 function App() {
   return (
@@ -9,15 +12,17 @@ function App() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to={RouteUrls.homepage}>Home</Link>
           </li>
           <li>
-            <Link to="/about">About Me</Link>
+            <Link to={RouteUrls.about}>About Me</Link>
           </li>
         </ul>
       </nav>
       <Routes>
-        <Route path="/about" element={<About />} />
+        <Route path={RouteUrls.homepage} element={<Home />} />
+        <Route path={RouteUrls.about} element={<About />} />
+        <Route path="/" element={<NotFound />} />
       </Routes>
     </div>
   );
